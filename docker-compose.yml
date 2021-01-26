@@ -1,0 +1,15 @@
+version: "3"
+services:
+    nodejs:
+        container_name: nodejs
+        build:
+            context: ./build/nodejs
+            dockerfile: Dockerfile
+        ports:
+            - 3300:3300
+        networks:
+            - nodejs-network
+
+networks:
+    nodejs-network:
+        driver: bridge
