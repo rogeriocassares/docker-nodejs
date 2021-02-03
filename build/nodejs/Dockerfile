@@ -14,11 +14,11 @@ RUN mkdir -p /usr/src/app/node_modules \
 
 WORKDIR /usr/src/app
 
-COPY ./src/weblab-app-example/package*.json ./
+COPY ./src/package*.json ./
 
 RUN npm install
 
-COPY ./src/weblab-app-example ./
+COPY ./src ./
 
 COPY --chown=node:node . .
 
