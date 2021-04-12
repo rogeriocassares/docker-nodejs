@@ -1,12 +1,12 @@
 version: "3"
 services:
     nodejs:
-        container_name: nodejs
+        container_name: nodejs_APP_NAME
         build:
-            context: ./build/nodejs
+            context: ./build/nodejs_APP_NAME
             dockerfile: Dockerfile
         ports:
-            - 3300:3300
+            - 3000:3000
         networks:
             - nodejs-network
 

@@ -2,8 +2,8 @@ var express = require("express");
 var app = express();
 var indexRouter = express.Router();
 
-var path = __dirname + '/views/';
-const PORT = 3300;
+var path = __dirname + '/src/views/';
+const PORT = 3000;
 const HOST = '0.0.0.0';
 
 
@@ -22,6 +22,6 @@ indexRouter.use(express.static(path));
 app.use('/', indexRouter);
 
 
-app.listen(3300, function () {
-  console.log('Example app listening on port 3300!')
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
 });
