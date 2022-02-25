@@ -1,26 +1,30 @@
-FROM node:14.16.1-alpine3.12
+FROM node:16.14.0-alpine3.15
 
-MAINTAINER username <roger10cassares@gmail.com>
+LABEL username <roger10cassares@gmail.com>
 
 RUN apk update \
-    && apk add tzdata
+    && apk add tzdata \
+    && apk add git
 
 ENV TZ=America/Sao_Paulo
 
 # Create app directory
 WORKDIR /usr/src/app
 
+RUN echo '{ "allow_root": true }' > /root/.bowerrc
+
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY ./src/nodejs_APP_NAME_app/package*.json ./
+COPY ./nodejs_smartcampus_pier9iot/package.json ./
+COPY ./nodejs_smartcampus_pier9iot/bower.json ./
 
 # RUN yarn
 # If you are building your code for production
 RUN rm -rf node_modules && yarn install --frozen-lockfile
 
 # Bundle app source
-COPY ./src/nodejs_APP_NAME_app ./
+COPY ./nodejs_smartcampus_pier9iot ./
 
-EXPOSE 3000
-CMD [ "node", "index.js" ]
+EXPOSE 7300
+CMD [ "yarn", "start" ]

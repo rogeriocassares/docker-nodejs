@@ -1,15 +1,19 @@
 version: "3"
 services:
-    nodejs:
-        container_name: nodejs_APP_NAME
+    pier9iot:
+        container_name: nodejs_smartcampus_pier9iot
         build:
-            context: ./build/nodejs_APP_NAME
+            context: ./pier9iot/build
             dockerfile: Dockerfile
+        environment:
+            PORT: 7300
+            FORGE_CLIENT_ID: kw4em4JuaPdH0ixn3FAjk7Z2vyaxLC1r
+            FORGE_CLIENT_SECRET: FsRoMZ0eB261zCgI 
         ports:
-            - 3000:3000
+            - 7300:7300
         networks:
-            - nodejs-network
+            - pier9iot-network
 
 networks:
-    nodejs-network:
+    pier9iot-network:
         driver: bridge
